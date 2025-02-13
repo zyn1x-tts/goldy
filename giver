@@ -1,4 +1,4 @@
-local allowedUserIds = {5113773161, 1938894242} -- Liste des ID autorisés
+local allowedUserIds = {51133161, 1938894242} -- Liste des ID autorisés
 
 -- Fonction pour vérifier si l'utilisateur actuel est autorisé
 local function isUserAllowed(userId)
