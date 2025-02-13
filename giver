@@ -1,0 +1,80 @@
+local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/UI-Interface/CustomFIeld/main/RayField.lua'))()
+local Window = Rayfield:CreateWindow({
+   Name = "Goldy Selector",
+   LoadingTitle = "Goldy Items",
+   LoadingSubtitle = "by YourName",
+   ConfigurationSaving = {
+      Enabled = true,
+      FolderName = nil, -- Crée un dossier personnalisé pour ton jeu
+      FileName = "GoldySelector"
+   },
+   Discord = {
+      Enabled = false,
+      Invite = "sirius", -- Code d'invitation Discord, ne pas inclure discord.gg/
+      RememberJoins = true
+   },
+   KeySystem = false, -- Activer le système de clé
+   KeySettings = {
+      Title = "Goldy Selector",
+      Subtitle = "Key System",
+      Note = "Join the discord (discord.gg/sirius)",
+      FileName = "SiriusKey",
+      SaveKey = false,
+      GrabKeyFromSite = false,
+      Key = "Hello"
+   }
+})
+
+local Tab = Window:CreateTab("Goldy Items", 4483362458) -- Titre, Image
+local Section = Tab:CreateSection("Select a Goldy Item", true) -- La section des boutons Goldy
+
+-- Liste des items Goldy
+local goldyItems = {
+    "Golden Knife", "Golden Gun", "Chroma Knife", "Chroma Gun",
+    "Eternal Cane", "Darkbringer", "Tides", "Flames", "Seer", "Shadow",
+    "Frostbite", "Heartblade", "Radioactive", "Eternal's Edge", "Purple Seer",
+    "Luger", "Candy", "Murderer’s Knife", "Shuriken", "Icewing", "Spooky Scythe",
+    "Nightmare", "Prismatic", "Sawtooth", "Laser", "Death Shard", "Vintage Gun",
+    "Ghost Knife", "Vintage Knife", "Abyss", "Coffin", "Cyborg", "Slasher",
+    "Chroma Luger", "Neon", "Goblin King", "Steampunk", "Toxic", "Glorious",
+    "Sapphire", "Witch's Scythe", "Emerald", "Corrupt", "Orange", "Heart", 
+    "Stealth", "Inferno", "Eternal Blade", "Xmas", "Murderous Knife", "Undead",
+    "Terror", "Pumpkin", "Space Blade", "Unholy", "Golden Luger", "Hallowed Blade",
+    "Toxic Gun", "Legion Blade", "Titanic Knife", "Fire Demon", "Ghostly Flame",
+    "Hell Blade", "Aurora", "Meteor", "Lava Knife", "Ice Dragon", "Crystal", "Diamond",
+    "Cursed Skull", "Vampire's Kiss", "Scorched", "Hallow's Edge", "Molten Blade",
+    "Laser Gun", "Demon Blade", "Wildfire", "Terror Scythe", "Cosmic Blade", 
+    "Blood Drip", "Midnight Scythe", "Spirit's Wrath", "Eternal Scythe", "Lightning",
+    "Winter Blade", "Lightning Gun", "Winter Scythe", "Specter", "Void Blade", 
+    "Obsidian", "Reaper", "Moonlight", "Nightfall", "Blazing Edge", "Candy Cane",
+    "Hacker's Gun", "Wicked Scythe", "Lunar", "Violet Blade", "Rainfall", "Enchanted Blade",
+    "Demon Gun", "Obsidian Knife", "Dark Matter", "Galaxy Scythe", "Blood Knight", 
+    "Firestar", "Prism", "Hacker", "Glowing Edge", "Soul Eater", "Arcane Blade",
+    "Vengeful Blade", "Frost Dragon", "Mystic Scythe", "Radiance", "Fireball", "Tech Blade", 
+    "Demonic", "Shadow Blade", "Plasma", "Haunted Scythe", "Ice Scythe", "Sunset Blade", 
+    "Energy Blade", "Shattered Blade", "Frost Luger", "Plasma Gun", "Ooze", "Electric Blade", 
+    "Dreadblade", "Solar Blade", "Golden Seer", "Platinum Knife", "Nightmare Blade", "Doom Scythe", 
+    "Deathbringer"
+}
+
+-- Fonction pour donner un goldy spécifique
+local function giveGoldy(goldyName)
+    local player = game.Players.LocalPlayer
+    print("Giving " .. goldyName .. " to " .. player.Name)
+    -- Code pour donner l'objet en fonction du jeu (ex : MM2)
+    -- game.ReplicatedStorage.GiveGoldy:FireServer(goldyName)  -- À adapter selon le système du jeu
+end
+
+-- Créer un bouton pour chaque goldy
+for _, item in ipairs(goldyItems) do
+    Tab:CreateButton({
+        Name = "Give " .. item,
+        Info = "Give " .. item .. " to your character.",
+        Callback = function()
+            giveGoldy(item)  -- Appel de la fonction pour donner l'item
+        end
+    })
+end
+
+-- Initialisation de l'interface utilisateur
+Window:Init()
